@@ -33,4 +33,7 @@ class Author < ApplicationRecord
   end
 
 
+# set up validations so we can create error type in graphql
+validates :last_name, presence: true
+
 end

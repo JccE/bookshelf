@@ -41,6 +41,11 @@ class Types::AuthorType < Types::BaseObject
   # define an array of Integers by placing Int in []
   field :publication_years, [Int], null: false
 
+  # for errors. run agains the Author model that has validations with presence: true
+  field :errors, [Types::ErrorType], null: true
 
+  def errors
+    object.errors.map { |e| {field_name: e, errors: object.errors[e] }}
+  end
 
 end
